@@ -1,0 +1,16 @@
+{
+  "name": "fpl-data-server",
+  "version": "1.0.0",
+  "description": "خادم ذكي لجلب وتحليل بيانات فانتازي الدوري الإنجليزي",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["fpl", "fantasy", "api", "nodejs", "express"],
+  "author": "Ahmad",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "express": "^4.18.2"
+  }
+}
