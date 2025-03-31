@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: FPL Data Server API
+  version: 1.0.0
+  description: |
+    واجهة API لتحليل بيانات فانتازي الدوري الإنجليزي، وتشمل تحليل اللاعبين، وجلب ترتيب الدوريات من RapidAPI.
+servers:
+  - url: https://fpl-data-server.onrender.com
+
+paths:
+  /analyze/player/{name}:
+    get:
+      summary: تحليل لاعب حسب الاسم
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+          description: اسم اللاعب (web_name)
+      responses:
+        '200':
+          description: تحليل اللاعب وبياناته
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  points:
+                    type: integer
+                  form:
+                    type: string
+                  price:
+                    type: number
+                  status:
+                    type: string
+                  recommendation:
+                    type: string
+
+  /rapidapi/league/{id}:
+    get:
+      summary: ترتيب دوري من RapidAPI
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: رقم الدوري الكلاسيكي (Classic League ID)
+      responses:
+        '200':
+          description: بيانات الترتيب
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  standings:
+                    type: object
